@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Nova - Création de Sites Web pour Petites Entreprises</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4F46E5;
+            --primary-light: #EEF2FF;
+            --secondary: #10B981;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+            --white: #FFFFFF;
+            --border: #E5E7EB;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .btn-devis {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .btn-devis:hover {
+            background-color: #4338CA;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 0.4rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        /* ===== SECTION HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #F0F9FF 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #4338CA;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            margin-top: 2rem;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* ===== SECTION OFFRES ===== */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            font-size: 1.05rem;
+        }
+
+        .offres-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .offre-group {
+            margin-bottom: 3rem;
+        }
+
+        .offre-group-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .offre-group-desc {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .offre-card {
+            background-color: var(--white);
+            border: 2px solid var(--border);
+            border-radius: 0.75rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .offre-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .offre-card h3 {
+            font-size: 1.25rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .offre-card .prix {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .offre-card ul {
+            list-style: none;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .offre-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            color: var(--gray);
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .offre-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .offre-card .btn {
+            align-self: flex-start;
+            margin-top: auto;
+        }
+
+        .note-offres {
+            background-color: var(--light);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            color: var(--gray);
+            text-align: center;
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        /* ===== SECTION POUR QUI ===== */
+        .pour-qui-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .pour-qui-card {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pour-qui-card:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        .pour-qui-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pour-qui-card h3 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        /* ===== SECTION AVANTAGES ===== */
+        .avantages-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .avantage-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .avantage-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transform: translateX(5px);
+        }
+
+        .avantage-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .avantage-card h3 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .avantage-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* ===== SECTION QUI SOMMES-NOUS ===== */
+        .qui-sommes-nous {
+            background-color: var(--light);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 3rem;
+        }
+
+        .qui-sommes-nous-text h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .qui-sommes-nous-text p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        .qui-sommes-nous-image {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #F0F9FF 100%);
+            padding: 3rem;
+            border-radius: 1rem;
+            text-align: center;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        /* ===== SECTION ÉTAPES ===== */
+        .etapes-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .etape-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            background-color: var(--light);
+            position: relative;
+        }
+
+        .etape-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .etape-card h3 {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .etape-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .etape-arrow {
+            display: none;
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* ===== SECTION TÉMOIGNAGES ===== */
+        .temoignages-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .temoignage-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .temoignage-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: #FBBF24;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .temoignage-text {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .temoignage-author {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .temoignage-role {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== SECTION FAQ ===== */
+        .faq-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-question {
+            background-color: var(--light);
+            padding: 1.5rem;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .faq-question:hover {
+            background-color: var(--primary-light);
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding: 1.5rem;
+            color: var(--gray);
+            background-color: var(--white);
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* ===== SECTION CONTACT ===== */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-message {
+            background-color: var(--primary-light);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            color: var(--dark);
+            border-left: 4px solid var(--primary);
+        }
+
+        .contact-info-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .contact-info-icon {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-top: 0.25rem;
+        }
+
+        .contact-info-text h3 {
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+            font-size: 1rem;
+        }
+
+        .contact-info-text p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background-color: #4338CA;
+            transform: translateY(-3px);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        .footer-logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background-color: var(--white);
+                padding: 1rem;
+                gap: 1rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                z-index: 999;
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .qui-sommes-nous {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .offre-card {
+                padding: 1.5rem;
+            }
+
+            .header-container {
+                padding: 1rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .etape-arrow {
+                display: none !important;
+            }
+
+            .hero {
+                min-height: 50vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .offres-container {
+                grid-template-columns: 1fr;
+            }
+
+            .pour-qui-container {
+                grid-template-columns: 1fr;
+            }
+
+            .avantages-container {
+                grid-template-columns: 1fr;
+            }
+
+            .etapes-container {
+                grid-template-columns: 1fr;
+            }
+
+            .temoignages-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HEADER ===== -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <img src="logo.png" alt="Infinity Web" style="height: 100px; width: auto;">
+            </a>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="nav">
+                <a href="#accueil">Accueil</a>
+                <a href="#offres">Nos offres</a>
+                <a href="#avantages">Pourquoi nous</a>
+                <a href="#apropos">Qui sommes-nous</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="btn-devis" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Devis gratuit</button>
+        </div>
+    </header>
+
+    <!-- ===== SECTION HERO ===== -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h1>Créons un site web simple, professionnel et adapté à votre activité</h1>
+            <p>Nous aidons les petites entreprises, commerces, artisans et magasins à être visibles sur internet avec des sites clairs, modernes et faciles à gérer.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('offres').scrollIntoView({ behavior: 'smooth' })">Voir nos offres</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })">Demander un devis gratuit</button>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- ===== SECTION NOS OFFRES ===== -->
+    <section class="section" id="offres">
+        <h2 class="section-title">Nos offres</h2>
+        <p class="section-subtitle">Trouvez la solution adaptée à votre besoin et votre budget</p>
+
+        <!-- OFFRE VITRINE -->
+        <div class="offre-group">
+            <h3 class="offre-group-title">📄 Site Vitrine</h3>
+            <p class="offre-group-desc">Un site simple pour présenter votre entreprise, vos services, vos horaires et vos coordonnées.</p>
+
+            <div class="offres-container">
+                <div class="offre-card">
+                    <h3>Option Standard</h3>
+                    <div class="prix">200€ - 400€</div>
+                    <ul>
+                        <li>Présentation de l'entreprise</li>
+                        <li>Page Accueil, Services, À propos</li>
+                        <li>Google Maps intégré</li>
+                        <li>Design responsive & personnalisé</li>
+                        <li>Galerie photos</li>
+
+                    </ul>
+                    <button class="btn btn-primary" onclick="selectPlan('vitrine-standard')">Choisir</button>
+                </div>
+
+                <div class="offre-card">
+                    <h3>Option Premium</h3>
+                    <div class="prix">400€ - 700€</div>
+                    <ul>
+                        <li>Design très personnalisé</li>
+                        <li>Optimisation SEO de base</li>
+                        <li>Galerie photos</li>
+                        <li>Témoignages clients</li>
+                        <li>Page Contact avancée</li>
+                        <li>Formulaire de contact</li>
+                        <li>Accompagnement complet</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="selectPlan('vitrine-premium')">Choisir</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- OFFRE DYNAMIQUE -->
+        <div class="offre-group" id="offres-dynamique">
+            <h3 class="offre-group-title">⚙️ Site Dynamique Avancé</h3>
+            <p class="offre-group-desc">Un site plus avancé avec des fonctionnalités interactives et un espace administrateur pour modifier votre contenu.</p>
+
+            <div class="offres-container">
+                <div class="offre-card">
+                    <h3>Option Standard</h3>
+                    <div class="prix">900€ - 1500€</div>
+                    <ul>
+                        <li>Contenu modifiable</li>
+                        <li>Tableau de bord administrateur simple</li>
+                        <li>Pages dynamiques</li>
+                        <li>Gestion des services/produits</li>
+                        <li>Formulaire simple</li>
+                        <li>Gestion des images</li>
+                        <li>Design responsive</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="selectPlan('dynamique-standard')">Choisir</button>
+                </div>
+
+                <div class="offre-card">
+                    <h3>Option Premium</h3>
+                    <div class="prix">1500€ - 2000€</div>
+                    <ul>
+                        <li>Fonctionnalités personnalisées</li>
+                        <li>Espace client/utilisateur</li>
+                        <li>Formulaire avancé</li>
+                        <li>Gestion complète des contenus</li>
+                        <li>Système de commande avancé</li>
+                        <li>Système de paiement en ligne</li>
+                        <li>Optimisation performances</li>
+                        <li>Accompagnement technique</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="selectPlan('dynamique-premium')">Choisir</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="note-offres">
+            💡 Les prix peuvent varier selon les besoins spécifiques de votre projet. Un devis personnalisé et gratuit vous sera proposé après échange.
+        </div>
+    </section>
+
+    <!-- ===== SECTION POUR QUI ===== -->
+    <section class="section" style="background-color: var(--light);">
+        <h2 class="section-title">Pour qui sommes-nous ?</h2>
+        <p class="section-subtitle">Notre service est adapté à tous les types de petites structures</p>
+
+        <div class="pour-qui-container">
+            <div class="pour-qui-card">
+                <div class="pour-qui-icon">🏪</div>
+                <h3>Petits Commerces</h3>
+            </div>
+            <div class="pour-qui-card">
+                <div class="pour-qui-icon">🍽️</div>
+                <h3>Restaurants & Cafés</h3>
+            </div>
+            <div class="pour-qui-card">
+                <div class="pour-qui-icon">✂️</div>
+                <h3>Salons de Coiffure</h3>
+            </div>
+            <div class="pour-qui-card">
+                <div class="pour-qui-icon">👗</div>
+                <h3>Boutiques Locales</h3>
+            </div>
+            <div class="pour-qui-card">
+                <div class="pour-qui-icon">🔧</div>
+                <h3>Artisans</h3>
+            </div>
+            <div class="pour-qui-card">
+                <div class="pour-qui-icon">💼</div>
+                <h3>Auto-Entrepreneurs</h3>
+            </div>
+            <div class="pour-qui-card">
+                <div class="pour-qui-icon">🏥</div>
+                <h3>Professionnels Libéraux</h3>
+            </div>
+            <div class="pour-qui-card">
+                <div class="pour-qui-icon">🤝</div>
+                <h3>Associations</h3>
+            </div>
+            <div class="pour-qui-card">
+                <div class="pour-qui-icon">📚</div>
+                <h3>Mini-Entreprises</h3>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION AVANTAGES ===== -->
+    <section class="section" id="avantages">
+        <h2 class="section-title">Pourquoi nous choisir ?</h2>
+        <p class="section-subtitle">Découvrez les avantages de notre service</p>
+
+        <div class="avantages-container">
+            <div class="avantage-card">
+                <div class="avantage-icon">🎯</div>
+                <h3>Simple à Comprendre</h3>
+                <p>Pas de jargon compliqué. Nous expliquons tout simplement pour que vous compreniez votre site.</p>
+            </div>
+
+            <div class="avantage-card">
+                <div class="avantage-icon">✨</div>
+                <h3>Design Moderne</h3>
+                <p>Un site beau, professionnel et contemporain qui inspire confiance à vos visiteurs.</p>
+            </div>
+
+            <div class="avantage-card">
+                <div class="avantage-icon">💰</div>
+                <h3>Prix Adaptés</h3>
+                <p>Des tarifs pensés pour les petites entreprises et indépendants. Chacun peut avoir son site.</p>
+            </div>
+
+            <div class="avantage-card">
+                <div class="avantage-icon">🤝</div>
+                <h3>Accompagnement Complet</h3>
+                <p>Nous vous guidons étape par étape, du premier contact jusqu'à la mise en ligne.</p>
+            </div>
+
+            <div class="avantage-card">
+                <div class="avantage-icon">📱</div>
+                <h3>Adapté au Téléphone</h3>
+                <p>Votre site fonctionne parfaitement sur tous les appareils : téléphone, tablette, ordinateur.</p>
+            </div>
+
+            <div class="avantage-card">
+                <div class="avantage-icon">🔧</div>
+                <h3>Évolution Possible</h3>
+                <p>Votre site peut grandir avec votre entreprise. Ajoutez des fonctionnalités plus tard si besoin.</p>
+            </div>
+
+            <div class="avantage-card">
+                <div class="avantage-icon">⚡</div>
+                <h3>Rapide & Performant</h3>
+                <p>Un site qui charge vite et fonctionne sans problème, même avec beaucoup de visiteurs.</p>
+            </div>
+
+            <div class="avantage-card">
+                <div class="avantage-icon">🔒</div>
+                <h3>Sécurisé</h3>
+                <p>Votre site et vos données sont protégés. Nous prenons la sécurité très au sérieux.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION QUI SOMMES-NOUS ===== -->
+    <section class="section" id="apropos">
+        <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Qui sommes-nous ?</h2>
+
+        <div class="qui-sommes-nous">
+            <div class="qui-sommes-nous-text">
+                <h2>Notre Mission</h2>
+                <p>Nous sommes une agence spécialisée dans la création de sites web simples, modernes et efficaces pour les petites entreprises, commerces et indépendants.</p>
+                <p>Notre objectif est d'aider les professionnels à être visibles sur internet sans complexité. Chaque entrepreneur mérite d'avoir une présence en ligne professionnelle.</p>
+                <p>Nous accompagnons chaque client étape par étape, avec des explications clares et des solutions adaptées à son budget et ses besoins réels.</p>
+                <p><strong>Créer un site web ne doit pas être compliqué. Nous nous occupons de tout.</strong></p>
+            </div>
+            <div class="qui-sommes-nous-image">
+                💡
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION ÉTAPES ===== -->
+    <section class="section" style="background-color: var(--light);">
+        <h2 class="section-title">Comment ça fonctionne ?</h2>
+        <p class="section-subtitle">Notre processus en 4 étapes simples</p>
+
+        <div class="etapes-container">
+            <div class="etape-card">
+                <div class="etape-number">1</div>
+                <h3>Premier Contact</h3>
+                <p>Nous discutons de votre activité, vos besoins, vos envies et votre budget.</p>
+            </div>
+
+            <div class="etape-card">
+                <div class="etape-number">2</div>
+                <h3>Proposition de Solution</h3>
+                <p>Nous vous conseillons l'offre la plus adaptée et vous expliquons comment ça va fonctionner.</p>
+            </div>
+
+            <div class="etape-card">
+                <div class="etape-number">3</div>
+                <h3>Création du Site</h3>
+                <p>Nous créons un site moderne, clair, responsive et professionnel selon vos demandes.</p>
+            </div>
+
+            <div class="etape-card">
+                <div class="etape-number">4</div>
+                <h3>Mise en Ligne & Formation</h3>
+                <p>Votre site est en ligne ! Nous vous expliquons comment l'utiliser et le gérer.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION FAQ ===== -->
+    <section class="section" style="background-color: var(--light);">
+        <h2 class="section-title">Questions Fréquentes</h2>
+        <p class="section-subtitle">Nous répondons à vos questions</p>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Combien coûte un site web ?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Les prix dépendent de vos besoins. Un site vitrine simple commence à 200€, et peut aller jusqu'à 600€ pour une version premium. Les sites dynamiques avec fonctionnalités avancées coûtent entre 900€ et 2000€. Nous proposons toujours un devis personnalisé et gratuit.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Combien de temps faut-il pour créer un site ?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Cela dépend de la complexité du site. Un site vitrine simple peut être créé en 1 à 2 semaines. Un site dynamique plus avancé peut prendre 4 à 8 semaines. Nous vous donnons un délai précis lors de la signature de votre devis.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Est-ce que le site fonctionne sur téléphone ?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Oui, absolument ! Tous nos sites sont responsifs, c'est-à-dire qu'ils s'adaptent parfaitement à tous les appareils : téléphone, tablette et ordinateur. C'est très important aujourd'hui car beaucoup de gens visitent internet depuis leur téléphone.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Est-ce que je peux modifier mon site après sa création ?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Cela dépend de votre offre. Avec un site vitrine simple, c'est un peu plus compliqué. Avec un site dynamique, vous pouvez modifier votre contenu vous-même grâce à une interface simple. Nous vous montrons comment faire, ou nous pouvons faire les modifications pour vous.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Est-ce que vous expliquez comment utiliser le site ?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Oui, c'est très important pour nous. Après la mise en ligne, nous vous proposons une formation simple pour expliquer comment votre site fonctionne, comment le modifier si nécessaire, et comment l'utiliser au quotidien.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Est-ce que je peux demander un devis gratuit ?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Bien sûr ! Un devis est toujours gratuit et sans engagement. Vous pouvez nous contacter par email, téléphone ou via le formulaire du site. Nous vous répondons rapidement pour discuter de vos besoins.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Que se passe-t-il après la mise en ligne ?</span>
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Après la mise en ligne, nous restons disponibles pour vous. Selon votre offre, nous vous proposons un accompagnement technique, des mises à jour de sécurité, ou des évolutions de votre site. Nous parlons de tout cela lors de votre devis.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION CONTACT ===== -->
+    <section class="section" id="contact">
+        <h2 class="section-title">Contactez-nous</h2>
+        <p class="section-subtitle">Commençons par discuter de votre projet</p>
+
+        <div class="contact-container">
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/mzdwkpqn" method="POST">
+                <div class="form-group">
+                    <label for="nom">Votre Nom</label>
+                    <input type="text" id="nom" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Votre Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telephone">Votre Téléphone</label>
+                    <input type="tel" id="telephone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="type">Type de site souhaité</label>
+                    <select id="type" name="site_type" required>
+                        <option value="">-- Sélectionnez une option --</option>
+                        <option value="vitrine-standard">Site Vitrine Standard</option>
+                        <option value="vitrine-premium">Site Vitrine Premium</option>
+                        <option value="dynamique-standard">Site Dynamique Standard</option>
+                        <option value="dynamique-premium">Site Dynamique Premium</option>
+                        <option value="autre">Je ne sais pas, conseillez-moi</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Votre Message</label>
+                    <textarea id="message" name="message" placeholder="Décrivez-nous votre activité et vos besoins..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="submitBtn">Envoyer ma demande</button>
+                <div id="formMessage" style="margin-top: 1rem; padding: 1rem; border-radius: 0.5rem; display: none; font-weight: 600;"></div>
+            </form>
+
+            <div class="contact-info">
+                <div class="contact-message">
+                    <strong>Vous ne savez pas quelle offre choisir ?</strong>
+                    <p style="margin-top: 0.5rem;">Contactez-nous, nous vous aidons gratuitement à trouver la solution la plus adaptée à votre activité et votre budget.</p>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">📧</div>
+                    <div class="contact-info-text">
+                        <h3>Email</h3>
+                        <p style="color: inherit;">ymehdi.2005@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="contact-info-item">
+                    <div class="contact-info-icon">📱</div>
+                    <div class="contact-info-text">
+                        <h3>Téléphone</h3>
+                        <p><a href="tel:+32 484 41 43 73" style="color: inherit;">+32 484 41 43 73</a></p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="Infinity Web" style="height: 80px; width: auto;">
+                </div>
+                <p>Nous créons des sites web simples, modernes et adaptés aux besoins des petites entreprises, commerces et indépendants.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Liens Rapides</h3>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#offres">Nos offres</a></li>
+                    <li><a href="#avantages">Pourquoi nous choisir</a></li>
+                    <li><a href="#apropos">Qui sommes-nous</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Nos Services</h3>
+                <ul>
+                    <li><a href="#offres">Site Vitrine</a></li>
+                    <li><a href="#offres-dynamique">Site Dynamique</a></li>
+                    <li><a href="#contact">Demander un Devis</a></li>
+                    <li><a href="#contact">Support & Formation</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Informations</h3>
+                <ul>
+                    <li><a href="#">Mentions Légales</a></li>
+                    <li><a href="#">Politique de Confidentialité</a></li>
+                    <li><a href="#">Conditions Générales</a></li>
+                    <li><a href="#contact">Nous Contacter</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Iifinity Web. Tous droits réservés. | Création de sites web </p>
+        </div>
+    </footer>
+
+    <script>
+        // Gestion du formulaire
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                // Formspree gère le reste automatiquement
+                submitBtn.disabled = true;
+                submitBtn.textContent = '⏳ Envoi en cours...';
+            });
+        }
+
+        // Menu mobile toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const nav = document.getElementById('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+
+        // Close menu when link is clicked
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+
+        // FAQ toggle
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            faqItem.classList.toggle('active');
+
+            // Close other FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                if (item !== faqItem && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                }
+            });
+        }
+
+        // Smooth scroll fix for sticky header
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Sélection de plan depuis les offres
+        function selectPlan(planType) {
+            // Sélectionner le plan dans le dropdown
+            document.getElementById('type').value = planType;
+            
+            // Scroll vers la section contact
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
