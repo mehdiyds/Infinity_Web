@@ -1183,22 +1183,22 @@
             <form class="contact-form" id="contactForm" action="https://formspree.io/f/mzdwkpqn" method="POST">
                 <div class="form-group">
                     <label for="nom">Votre Nom</label>
-                    <input type="text" id="nom" name="name" required>
+                    <input type="text" id="nom" name="name">
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Votre Email</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="email">Votre Email <span style="color: #9CA3AF; font-weight: normal;">(optionnel)</span></label>
+                    <input type="email" id="email" name="email">
                 </div>
 
                 <div class="form-group">
-                    <label for="telephone">Votre Téléphone</label>
+                    <label for="telephone">Votre Téléphone <span style="color: #DC2626; font-weight: normal;">*</span></label>
                     <input type="tel" id="telephone" name="phone">
                 </div>
 
                 <div class="form-group">
                     <label for="type">Type de site souhaité</label>
-                    <select id="type" name="site_type" required>
+                    <select id="type" name="site_type">
                         <option value="">-- Sélectionnez une option --</option>
                         <option value="vitrine-standard">Site Vitrine Standard</option>
                         <option value="vitrine-premium">Site Vitrine Premium</option>
@@ -1292,15 +1292,165 @@
     </footer>
 
     <script>
-        // Gestion du formulaire
+        // Validation du formulaire
         const form = document.getElementById('contactForm');
         const submitBtn = document.getElementById('submitBtn');
+        const formMessage = document.getElementById('formMessage');
+        const nomInput = document.getElementById('nom');
+        const emailInput = document.getElementById('email');
+        const telephoneInput = document.getElementById('telephone');
+        const typeSelect = document.getElementById('type');
+        const messageInput = document.getElementById('message');
 
+        // Fonction de validation
+        function validateForm() {
+            let isValid = true;
+            let errors = [];
+
+            // Réinitialiser les messages
+            formMessage.style.display = 'none';
+            formMessage.textContent = '';
+            formMessage.style.backgroundColor = '';
+            formMessage.style.color = '';
+
+            // Validation du nom
+            if (!nomInput.value.trim()) {
+                isValid = false;
+                errors.push('Le nom est requis');
+                nomInput.style.borderColor = '#DC2626';
+            } else if (nomInput.value.trim().length < 2) {
+                isValid = false;
+                errors.push('Le nom doit contenir au moins 2 caractères');
+                nomInput.style.borderColor = '#DC2626';
+            } else if (/\d/.test(nomInput.value.trim())) {
+                isValid = false;
+                errors.push('Le nom ne doit pas contenir de chiffres');
+                nomInput.style.borderColor = '#DC2626';
+            } else {
+                nomInput.style.borderColor = '';
+            }
+
+            // Validation de l'email (optionnel, mais si rempli doit être valide)
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailInput.value.trim() && !emailRegex.test(emailInput.value.trim())) {
+                isValid = false;
+                errors.push('L\'email n\'est pas valide (ex: votremail@domaine.com)');
+                emailInput.style.borderColor = '#DC2626';
+            } else {
+                emailInput.style.borderColor = '';
+            }
+
+            // Validation du téléphone (obligatoire)
+            if (!telephoneInput.value.trim()) {
+                isValid = false;
+                errors.push('Le téléphone est requis');
+                telephoneInput.style.borderColor = '#DC2626';
+            } else {
+                const phoneRegex = /^[\d\s\-\+\(\)]{8,}$/;
+                if (!phoneRegex.test(telephoneInput.value.trim())) {
+                    isValid = false;
+                    errors.push('Le téléphone n\'est pas valide (minimum 8 chiffres)');
+                    telephoneInput.style.borderColor = '#DC2626';
+                } else {
+                    telephoneInput.style.borderColor = '';
+                }
+            }
+
+            // Validation du type de site
+            if (!typeSelect.value) {
+                isValid = false;
+                errors.push('Veuillez sélectionner un type de site');
+                typeSelect.style.borderColor = '#DC2626';
+            } else {
+                typeSelect.style.borderColor = '';
+            }
+
+            // Validation du message (optionnel, mais s'il est rempli)
+            if (messageInput.value.trim() && messageInput.value.trim().length < 5) {
+                isValid = false;
+                errors.push('Le message doit contenir au moins 5 caractères');
+                messageInput.style.borderColor = '#DC2626';
+            } else {
+                messageInput.style.borderColor = '';
+            }
+
+            // Affichage des erreurs
+            if (!isValid) {
+                formMessage.style.display = 'block';
+                formMessage.style.backgroundColor = '#FEE2E2';
+                formMessage.style.color = '#DC2626';
+                formMessage.style.borderLeft = '4px solid #DC2626';
+                formMessage.innerHTML = '<strong>❌ Erreurs détectées:</strong><br>' + errors.map(e => '• ' + e).join('<br>');
+            }
+
+            return isValid;
+        }
+
+        // Validation en temps réel
+        nomInput.addEventListener('input', function() {
+            // Refuser les chiffres
+            if (/\d/.test(this.value)) {
+                this.style.borderColor = '#DC2626';
+                this.value = this.value.replace(/\d/g, ''); // Supprimer les chiffres automatiquement
+            } else if (this.value.trim().length >= 2) {
+                this.style.borderColor = '';
+            }
+        });
+
+        emailInput.addEventListener('input', function() {
+            if (!this.value.trim()) {
+                this.style.borderColor = '';
+            } else {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (emailRegex.test(this.value.trim())) {
+                    this.style.borderColor = '';
+                }
+            }
+        });
+
+        telephoneInput.addEventListener('input', function() {
+            const phoneRegex = /^[\d\s\-\+\(\)]{8,}$/;
+            if (this.value.trim() && phoneRegex.test(this.value.trim())) {
+                this.style.borderColor = '';
+            }
+        });
+
+        typeSelect.addEventListener('change', function() {
+            if (this.value) {
+                this.style.borderColor = '';
+            }
+        });
+
+        messageInput.addEventListener('input', function() {
+            if (this.value.trim().length >= 5 || !this.value.trim()) {
+                this.style.borderColor = '';
+            }
+        });
+
+        // Gestion du formulaire
         if (form) {
             form.addEventListener('submit', function(e) {
-                // Formspree gère le reste automatiquement
+                e.preventDefault();
+
+                // Valider le formulaire
+                if (!validateForm()) {
+                    return;
+                }
+
+                // Si validation réussie, afficher un message de succès
+                formMessage.style.display = 'block';
+                formMessage.style.backgroundColor = '#DBEAFE';
+                formMessage.style.color = '#1E40AF';
+                formMessage.style.borderLeft = '4px solid #3B82F6';
+                formMessage.textContent = '✅ Envoi de votre demande...';
+
+                // Envoyer le formulaire après 1 seconde
                 submitBtn.disabled = true;
                 submitBtn.textContent = '⏳ Envoi en cours...';
+                
+                setTimeout(() => {
+                    form.submit();
+                }, 1000);
             });
         }
 
